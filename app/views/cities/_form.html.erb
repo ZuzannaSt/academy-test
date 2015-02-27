@@ -1,0 +1,14 @@
+<%= form_for @city do |f| %>
+  <%= render "layouts/messages", object: @city %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, id: 'name', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :short_name %>
+    <%= f.text_field :short_name, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-success btn-lg' %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<td><%= link_to city.name, city %></td>
+<td><%= city.short_name %></td>
+
+<td>
+  <%= link_to edit_city_path(city), class: 'btn btn-warning button-xs' do %>
+    <span class="glyphicon glyphicon-pencil"> 
+  <% end %>
+  <%= link_to city_path(city), class: 'btn btn-danger button-xs', method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <span class="glyphicon glyphicon-trash">
+  <% end %>
+</td>
