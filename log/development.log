@@ -877,3 +877,144 @@ Processing by UsersController#index as HTML
   Rendered layouts/_navigation.html.erb (1.6ms)
   Rendered layouts/_messages.html.erb (0.2ms)
 Completed 200 OK in 82ms (Views: 80.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-27 11:09:52 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (1.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (6.3ms)
+  Rendered layouts/_navigation.html.erb (7.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 90ms (Views: 88.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-02-27 11:09:54 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.9ms)
+  Rendered users/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.erb (3.1ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 119ms (Views: 114.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/all_users" for 127.0.0.1 at 2015-02-27 11:10:17 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 88ms (Views: 86.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-27 11:12:49 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (1.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (7.2ms)
+  Rendered layouts/_navigation.html.erb (8.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 88ms (Views: 87.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/all_users" for 127.0.0.1 at 2015-02-27 11:12:51 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.8ms)
+  Rendered users/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 91ms (Views: 83.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-02-27 11:13:00 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.4ms)
+  Rendered users/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 88ms (Views: 85.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/all_users" for 127.0.0.1 at 2015-02-27 11:13:04 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 85ms (Views: 83.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-27 11:13:06 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (2.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 85ms (Views: 84.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/all_users" for 127.0.0.1 at 2015-02-27 11:13:07 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 84ms (Views: 82.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-02-27 11:13:09 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 83ms (Views: 78.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/all_users" for 127.0.0.1 at 2015-02-27 11:13:13 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.4ms)
+  Rendered users/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 101ms (Views: 98.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-02-27 12:28:04 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 81ms (Views: 77.6ms | ActiveRecord: 0.4ms)

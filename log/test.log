@@ -1910,3 +1910,1422 @@ Completed 200 OK in 16ms (Views: 7.4ms | ActiveRecord: 0.5ms)
   [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
   [1m[35m (0.0ms)[0m  begin transaction
   [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (118.9ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (369.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 408ms (Views: 384.4ms | ActiveRecord: 0.4ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@example.com"]]
+Completed 401 Unauthorized in 7ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$VCS8VCBsbGGiIUg37lydNuFodHbOoynmytG9hhPwG6RnibKQV2dSW"], ["created_at", "2015-02-27 11:29:50.546141"], ["updated_at", "2015-02-27 11:29:50.546141"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@example.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:50.568362"], ["current_sign_in_at", "2015-02-27 11:29:50.568362"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:50.569603"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 12ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (1.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$RhglaOPASCiR27NAgsCol.pIiV/rw6fAHN/TlyZNVUW/pJuDdN2NK"], ["created_at", "2015-02-27 11:29:50.603417"], ["updated_at", "2015-02-27 11:29:50.603417"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"invalid@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "invalid@email.com"]]
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"invalid@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$qKOCd6tqyidhMf1dLJra2utD3VHl6yHP/dfoiA/LT5DWy1nk2QCj6"], ["created_at", "2015-02-27 11:29:50.644346"], ["updated_at", "2015-02-27 11:29:50.644346"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (7.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@example.com"]]
+Completed 401 Unauthorized in 3ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (7.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$Sd2DcbGfqidljh5JJ74bj.kJAWuWB.SnO6XDyXNc/ps/hPKz775nG"], ["created_at", "2015-02-27 11:29:50.684882"], ["updated_at", "2015-02-27 11:29:50.684882"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@example.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:50.707083"], ["current_sign_in_at", "2015-02-27 11:29:50.707083"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:50.708095"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (1.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (217.2ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$o3L0EnpxcKmPd2MpXfgh8es8IUo56gNGcHqfcYCEQCqTj3a6aoGbG"], ["created_at", "2015-02-27 11:29:50.967666"], ["updated_at", "2015-02-27 11:29:50.967666"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/edit.1" for 127.0.0.1 at 2015-02-27 12:29:50 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:50.970347"], ["current_sign_in_at", "2015-02-27 11:29:50.970347"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:50.971213"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by RegistrationsController#edit as 
+  Rendered devise/registrations/edit.html.erb within layouts/application (10.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.erb (5.2ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 38ms (Views: 36.9ms | ActiveRecord: 0.0ms)
+Started PUT "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"Test User", "email"=>"newemail@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>"", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'newemail@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "email" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["email", "newemail@example.com"], ["updated_at", "2015-02-27 11:29:51.037722"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$APsEzknFOkLITVCMoRPh4OlStmB.ltWaVrFW73wk.OhqJzsTkLFV2"], ["created_at", "2015-02-27 11:29:51.055916"], ["updated_at", "2015-02-27 11:29:51.055916"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'other@example.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "other@example.com"], ["encrypted_password", "$2a$04$zAAGdy.pYnyKzvAps/DdEOL1uYfkQitxoqpDUZQPuodtc8gKysG.G"], ["created_at", "2015-02-27 11:29:51.060213"], ["updated_at", "2015-02-27 11:29:51.060213"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/edit.2" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2015-02-27 11:29:51.062649"], ["current_sign_in_at", "2015-02-27 11:29:51.062649"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:51.063726"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by RegistrationsController#edit as 
+  Rendered devise/registrations/edit.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$26U.gKURb9UIm8oVlG7bDeoGSeqWgJUUzY1dSKcX8YORlbEHahrfW"], ["created_at", "2015-02-27 11:29:51.085017"], ["updated_at", "2015-02-27 11:29:51.085017"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:51.087297"], ["current_sign_in_at", "2015-02-27 11:29:51.087297"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:51.088058"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.6ms)
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$weS3swtV49jg12.a/36cEuBXOeaoq7jHSHUSfGd2PhI.yAIwhSa4C"], ["created_at", "2015-02-27 11:29:51.110505"], ["updated_at", "2015-02-27 11:29:51.110505"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/1" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:51.113652"], ["current_sign_in_at", "2015-02-27 11:29:51.113652"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:51.114543"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$C8JxhyWP9f4jF5OdAcRcUOuWznhTSLNeu3I4GQ8MYTP/HOr4Ltd/K"], ["created_at", "2015-02-27 11:29:51.126506"], ["updated_at", "2015-02-27 11:29:51.126506"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'other@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "other@example.com"], ["encrypted_password", "$2a$04$i1gZwj8QRfPLqA2whhVMkeYGd76o4JQ5erqfsrk7mHn4t2oIjAnji"], ["created_at", "2015-02-27 11:29:51.130673"], ["updated_at", "2015-02-27 11:29:51.130673"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/2" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:51.132816"], ["current_sign_in_at", "2015-02-27 11:29:51.132816"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:51.133564"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+Redirected to /
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (1.4ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", ""], ["email", "test@example.com"], ["encrypted_password", "$2a$04$I6jb39YlLQDlxqRyTQgzfOv6DDdpzAsNcKiJNdixhSKbPLYxqodPK"], ["created_at", "2015-02-27 11:29:51.181425"], ["updated_at", "2015-02-27 11:29:51.181425"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:29:51.183110"], ["current_sign_in_at", "2015-02-27 11:29:51.183110"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:29:51.183946"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"bogus", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bogus' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/registrations/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 7.7ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/registrations/new.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 7.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:29:51 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (136.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:08 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (366.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (1.8ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 406ms (Views: 381.6ms | ActiveRecord: 0.3ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@example.com"]]
+Completed 401 Unauthorized in 6ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (8.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 18ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$ApBkdmYa0M7v599h19hxEOgAdVhsAOZ.sHJwCU3xQaX4N4Lm5.PE."], ["created_at", "2015-02-27 11:30:09.265993"], ["updated_at", "2015-02-27 11:30:09.265993"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (8.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@example.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.287931"], ["current_sign_in_at", "2015-02-27 11:30:09.287931"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.289169"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 12ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (1.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$fGrfZcrLJ3oqG9yodAFeMegq9m41ZKeXmPBg/tiAkR2uWmij9lhR."], ["created_at", "2015-02-27 11:30:09.322692"], ["updated_at", "2015-02-27 11:30:09.322692"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (8.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"invalid@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "invalid@email.com"]]
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"invalid@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$8TjqI14tddSamXVeQaQTkeiRm7.CFS497YAAWMbRYfGmIvGl0YhkS"], ["created_at", "2015-02-27 11:30:09.363476"], ["updated_at", "2015-02-27 11:30:09.363476"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@example.com"]]
+Completed 401 Unauthorized in 3ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$zHTk20wl73jzCEXLkgu6E.j0K/WcSi82lrcG24vqXyyP6Omk/WlZG"], ["created_at", "2015-02-27 11:30:09.404423"], ["updated_at", "2015-02-27 11:30:09.404423"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@example.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.426089"], ["current_sign_in_at", "2015-02-27 11:30:09.426089"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.427119"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (203.8ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$Zwx0eDnJjwL0S4c3zpowA.YtMhVrGK.cwCjL/7N0eENTI4h56J.Y2"], ["created_at", "2015-02-27 11:30:09.662370"], ["updated_at", "2015-02-27 11:30:09.662370"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/edit.1" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.666270"], ["current_sign_in_at", "2015-02-27 11:30:09.666270"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.667835"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by RegistrationsController#edit as 
+  Rendered devise/registrations/edit.html.erb within layouts/application (9.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.erb (5.2ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+Started PUT "/users" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"Test User", "email"=>"newemail@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>"", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'newemail@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "email" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["email", "newemail@example.com"], ["updated_at", "2015-02-27 11:30:09.737318"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$Ik1dlyAHZfG753D0Zzy0VevWkCqZ6wM3NVq8P.TfO2Kc67E2kpCe."], ["created_at", "2015-02-27 11:30:09.755155"], ["updated_at", "2015-02-27 11:30:09.755155"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'other@example.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "other@example.com"], ["encrypted_password", "$2a$04$9b3bs2A.5GFiJrNzXI/fhekbVd7OFUG78tdaFuVe4pttYlDuCa/ke"], ["created_at", "2015-02-27 11:30:09.759465"], ["updated_at", "2015-02-27 11:30:09.759465"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/edit.2" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2015-02-27 11:30:09.761581"], ["current_sign_in_at", "2015-02-27 11:30:09.761581"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.762491"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by RegistrationsController#edit as 
+  Rendered devise/registrations/edit.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$fBY9saPusZZSjsWFcUQQSOod7Y3nrxlWoO7SH7RVSO3D8vWwP0wLO"], ["created_at", "2015-02-27 11:30:09.783107"], ["updated_at", "2015-02-27 11:30:09.783107"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.785367"], ["current_sign_in_at", "2015-02-27 11:30:09.785367"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.786145"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.6ms)
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$ERiDC0W9n6SWM8R2h0ykZ.EJwjp3lS/Cjt2C4qKgYFdxXNwq53mZa"], ["created_at", "2015-02-27 11:30:09.809989"], ["updated_at", "2015-02-27 11:30:09.809989"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/1" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.813024"], ["current_sign_in_at", "2015-02-27 11:30:09.813024"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.814032"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$xqaXf8ECwWwPjlQcM3llqezB4B5ECmMJwPB0RLGSaXG0Pnx8aLZz."], ["created_at", "2015-02-27 11:30:09.825933"], ["updated_at", "2015-02-27 11:30:09.825933"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'other@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "other@example.com"], ["encrypted_password", "$2a$04$h2URYNopgIk8VUxWLXxfUe4g/0vbwNgzx6PBYMJ6pseoit2hwW8yC"], ["created_at", "2015-02-27 11:30:09.830319"], ["updated_at", "2015-02-27 11:30:09.830319"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/2" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.832499"], ["current_sign_in_at", "2015-02-27 11:30:09.832499"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.833240"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+Redirected to /
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", ""], ["email", "test@example.com"], ["encrypted_password", "$2a$04$cA/hy6nts2f71xWT4AW6he9V7zfdJzZhE0nf1NN/.dWI.0JrOZf5i"], ["created_at", "2015-02-27 11:30:09.878926"], ["updated_at", "2015-02-27 11:30:09.878926"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:09.880573"], ["current_sign_in_at", "2015-02-27 11:30:09.880573"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:09.881287"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 10ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"bogus", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bogus' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 7.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 7.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 7.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:09 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:10 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (8.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 15.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:10 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:10 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (187.8ms)[0m  DELETE FROM "users";
+  [1m[36m (0.5ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (371.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (1.8ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 410ms (Views: 386.0ms | ActiveRecord: 0.6ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@example.com"]]
+Completed 401 Unauthorized in 6ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$9W2.hcMnySyJaePe8GMqEeTdlncZmusLLiuFrJWCxF9h9DA8tBrra"], ["created_at", "2015-02-27 11:30:43.763471"], ["updated_at", "2015-02-27 11:30:43.763471"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@example.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:43.785846"], ["current_sign_in_at", "2015-02-27 11:30:43.785846"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:43.787161"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 12ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (1.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$MwIvK95NwdzRUYozAnRaZOFY/U2bTLgZoj1TTlQ6rlhrlQQ82c6kC"], ["created_at", "2015-02-27 11:30:43.820707"], ["updated_at", "2015-02-27 11:30:43.820707"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (9.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"invalid@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "invalid@email.com"]]
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"invalid@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$DfXWFr90xQ3tKy463Lq5K.2AeBL4wCXN3SHKIjmBxjwcGOq2n37Ku"], ["created_at", "2015-02-27 11:30:43.861999"], ["updated_at", "2015-02-27 11:30:43.861999"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (7.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@example.com"]]
+Completed 401 Unauthorized in 3ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/sessions/new.html.erb within layouts/application (7.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$SYL703BYRYMjIyaImfw82u5VF/szlV//vNmVfMWwC0gMr6ZEJjNoS"], ["created_at", "2015-02-27 11:30:43.902719"], ["updated_at", "2015-02-27 11:30:43.902719"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@example.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:43.924898"], ["current_sign_in_at", "2015-02-27 11:30:43.924898"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:43.925910"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:43 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (196.1ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$GFHbwqr1lGoG7QdWhkiOduT2QrWZzeFSeH.utmnFiIournZzIade6"], ["created_at", "2015-02-27 11:30:44.153782"], ["updated_at", "2015-02-27 11:30:44.153782"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/edit.1" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:44.155981"], ["current_sign_in_at", "2015-02-27 11:30:44.155981"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:44.156735"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by RegistrationsController#edit as 
+  Rendered devise/registrations/edit.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.6ms)
+  Rendered layouts/_navigation.html.erb (5.2ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.0ms)
+Started PUT "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"Test User", "email"=>"newemail@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>"", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'newemail@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "email" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["email", "newemail@example.com"], ["updated_at", "2015-02-27 11:30:44.223105"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$TzQeDPPAqmE.Pfs3lEsr6uWLSSORlQzpg0qozZ6twsmBUJl7qxgxm"], ["created_at", "2015-02-27 11:30:44.240855"], ["updated_at", "2015-02-27 11:30:44.240855"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'other@example.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test User"], ["email", "other@example.com"], ["encrypted_password", "$2a$04$Tn1aIuHEf00VJ0bYHOqlBeHXPaowUUFEi2AWKaKWKTlevXc4Hu.Ei"], ["created_at", "2015-02-27 11:30:44.245118"], ["updated_at", "2015-02-27 11:30:44.245118"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/edit.2" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2015-02-27 11:30:44.247290"], ["current_sign_in_at", "2015-02-27 11:30:44.247290"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:44.248563"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by RegistrationsController#edit as 
+  Rendered devise/registrations/edit.html.erb within layouts/application (6.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$l6tv9txikm4M.o8ZSm.u7.s86eCdGAhgAUl0NjFIvnPHfa/1wt1.y"], ["created_at", "2015-02-27 11:30:44.270237"], ["updated_at", "2015-02-27 11:30:44.270237"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:44.272652"], ["current_sign_in_at", "2015-02-27 11:30:44.272652"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:44.273423"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/_user.html.erb (0.6ms)
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$Ur/Zj.tR1n.RbclKFCnXX.4JSCSLVggRV2l3mlyAjEwLpj51EcAkm"], ["created_at", "2015-02-27 11:30:44.296408"], ["updated_at", "2015-02-27 11:30:44.296408"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/1" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:44.299949"], ["current_sign_in_at", "2015-02-27 11:30:44.299949"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:44.300818"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "test@example.com"], ["encrypted_password", "$2a$04$bH77trYlISgCWF0GXwB8y.z2ZQcI20D6SKMymN0BN0b.MZTsLRwjS"], ["created_at", "2015-02-27 11:30:44.313463"], ["updated_at", "2015-02-27 11:30:44.313463"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'other@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Test User"], ["email", "other@example.com"], ["encrypted_password", "$2a$04$sAXTJ42wyYEhATDa1l3vIu5hXPYHyePY.a37mgSrAS6reaMTBSnbK"], ["created_at", "2015-02-27 11:30:44.317667"], ["updated_at", "2015-02-27 11:30:44.317667"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/2" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:44.319786"], ["current_sign_in_at", "2015-02-27 11:30:44.319786"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:44.320521"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+Redirected to /
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (1.4ms)
+  Rendered layouts/_navigation.html.erb (1.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by VisitorsController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", ""], ["email", "test@example.com"], ["encrypted_password", "$2a$04$opEADZqS/nTvanPLBSjkSeBy2U.tKuVyYzGsKb1gTzQmB4/9MNpRe"], ["created_at", "2015-02-27 11:30:44.367850"], ["updated_at", "2015-02-27 11:30:44.367850"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-02-27 11:30:44.369520"], ["current_sign_in_at", "2015-02-27 11:30:44.369520"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-02-27 11:30:44.370275"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Rendered visitors/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"bogus", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bogus' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/registrations/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 7.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 8.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/registrations/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 7.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-27 12:30:44 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "age"=>""}, "commit"=>"Sign up"}
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/registrations/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 16ms (Views: 7.5ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
