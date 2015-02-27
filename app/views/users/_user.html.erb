@@ -1,4 +1,4 @@
 <td><%= link_to user.name, user %></td>
 <td><%= link_to user.email, user %></td>
-<td><%= user.age %></td>
-<td><%= link_to user.city.name, user.city %></td>
+<td><%= user.age if user.age %></td>
+<td><%= link_to user.city.name, user.city if user.city %></td>
