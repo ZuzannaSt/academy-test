@@ -27,6 +27,10 @@
       <%= f.label :age %>
       <%= f.text_field :age, class: 'form-control' %>
     </div>
+    <div class="form-group">
+      <%= f.label :city_id %>
+      <%= f.collection_select :city_id, City.all, :id, :name, { prompt: 'Select city' }, :class => 'form-control' %>
+    </div>
     </fieldset>
     <fieldset>
       <p>You must enter your current password to make changes.</p>
