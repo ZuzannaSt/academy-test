@@ -13,5 +13,6 @@
       </table>      
     </div>    
   </div>
+  <%= will_paginate @cities, renderer: BootstrapPagination::Rails %>
   <%= link_to 'Add city', new_city_path %>
 </div>
